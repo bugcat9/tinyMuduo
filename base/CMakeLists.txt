@@ -1,5 +1,8 @@
 set(base_SRCS
 Timestamp.cpp
+CurrentThread.cpp
+Exception.cpp
+Thread.cpp
 )
 
 add_library(base ${base_SRCS})
