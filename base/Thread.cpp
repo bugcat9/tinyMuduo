@@ -34,7 +34,8 @@ namespace tinyMuduo
                                                                joined_(false),
                                                                tid_(0),
                                                                func_(std::move(func)),
-                                                               name_(name)
+                                                               name_(name),
+                                                               latch_(1)
     {
         setDefaultName();
     }
@@ -56,6 +57,7 @@ namespace tinyMuduo
         started_ = true;
         // ThreadData data = ThreadData(func_, name_, &tid_);
         m_thread_ = std::thread(std::bind(&Thread::runInThread, this));
+        latch_.wait();
     }
 
     void Thread::join()
@@ -77,6 +79,7 @@ namespace tinyMuduo
     void Thread::runInThread()
     {
         tid_ = CurrentThread::tid();
+        latch_.countDown();
         CurrentThread::t_threadName = name_.empty() ? "tinyMuduoThread" : name_.c_str();
         ::prctl(PR_SET_NAME, CurrentThread::t_threadName);
         try

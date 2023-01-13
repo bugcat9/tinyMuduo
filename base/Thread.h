@@ -6,6 +6,7 @@
 #include <thread>
 #include <string>
 #include "Atomic.h"
+#include "CountDownLatch.h"
 
 namespace tinyMuduo
 {
@@ -35,6 +36,8 @@ namespace tinyMuduo
         std::thread m_thread_;
         ThreadFunc func_;
         std::string name_;
+        CountDownLatch latch_;
+
         static AtomicInt32 numCreated_;
     };
 

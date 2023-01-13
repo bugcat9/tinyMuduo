@@ -2,6 +2,7 @@ set(base_SRCS
 Timestamp.cpp
 CurrentThread.cpp
 Exception.cpp
+CountDownLatch.cpp
 Thread.cpp
 )
 
