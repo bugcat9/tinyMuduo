@@ -9,3 +9,9 @@ target_link_libraries(thread_test base)
 
 add_executable(exception_test Exception_test.cpp)
 target_link_libraries(exception_test base)
+
+add_executable(mutex_test Mutex_test.cpp)
+target_link_libraries(mutex_test base)
+
+# add_executable(mutex_test2 Mutex_test2.cpp)
+# target_link_libraries(mutex_test2 base)
