@@ -199,6 +199,7 @@ Logger::~Logger()
         g_flush();
         abort();
     }
+    g_flush();
 }
 
 void Logger::setLogLevel(Logger::LogLevel level)
