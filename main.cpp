@@ -9,10 +9,17 @@
 #include <sys/wait.h>
 #include <sys/epoll.h>
 #include <string.h>
-
+#include <string>
+#include <unordered_map>
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <string>
+
+#include "base/ThreadPool.h"
+#include "base/CurrentThread.h"
+#include "base/Logging.h"
+#include "base/LogFile.h"
 
 // 重定义epoll_event 数组
 typedef std::vector<epoll_event> EventList;
@@ -25,8 +32,47 @@ typedef std::vector<epoll_event> EventList;
 
 #define PORT 8080
 
+std::unique_ptr<tinyMuduo::LogFile> g_logFile;
+std::unordered_map<int, std::string> buf_map;
+void outputFunc(const char *msg, int len)
+{
+  g_logFile->append(msg, len);
+}
+
+void flushFunc()
+{
+  g_logFile->flush();
+}
+
+/**
+ * @brief Set the Logger object
+ *
+ */
+void setLogger()
+{
+  g_logFile.reset(new tinyMuduo::LogFile("epoll", 500 * 1000 * 1000, false));
+  tinyMuduo::Logger::setOutput(outputFunc);
+  tinyMuduo::Logger::setFlush(flushFunc);
+}
+
+void strFunc(std::string s, const int epollfd, const int connfd)
+{
+  LOG_INFO << "tid=" << tinyMuduo::CurrentThread::tid() << s;
+  // 字符串翻转，相当于是处理计算任务
+  reverse(s.begin(), s.end());
+  buf_map[connfd] = s;
+
+  // 添加读取事件
+  epoll_event event;
+  event.data.fd = connfd;
+  event.events = EPOLLOUT;
+  epoll_ctl(epollfd, EPOLL_CTL_MOD, connfd, &event);
+}
+
 int main()
 {
+  // 设置日志
+  setLogger();
 
   /***
    * 屏蔽 SIGPIPE SIGCHLD 信号
@@ -75,6 +121,10 @@ int main()
   socklen_t peerlen;
   int connfd;
 
+  // 线程池相关设置
+  tinyMuduo::ThreadPool pool("pool");
+  pool.start(5);
+
   int nready;
   while (1)
   {
@@ -120,8 +170,8 @@ int main()
           else
             ERR_EXIT("accept4");
         }
-
-        std::cout << "ip=" << inet_ntoa(peeraddr.sin_addr) << " port=" << ntohs(peeraddr.sin_port) << std::endl;
+        // 使用日志
+        LOG_INFO << "ip=" << inet_ntoa(peeraddr.sin_addr) << " port=" << ntohs(peeraddr.sin_port);
 
         clients.push_back(connfd);
 
@@ -143,8 +193,8 @@ int main()
         {
           /***
            * 说明对方断开了连接
-          */
-          std::cout << "client close" << std::endl;
+           */
+          LOG_INFO << "client close";
           close(connfd);
           event = events[i];
           epoll_ctl(epollfd, EPOLL_CTL_DEL, connfd, &event);
@@ -152,11 +202,34 @@ int main()
           continue;
         }
 
-        std::cout << buf;
-        /***
-         * 写回对应的 内容，成为echo服务器
-        */
-        write(connfd, buf, strlen(buf));
+        LOG_INFO << buf;
+        // 放入线程池中运行
+        // strFunc(std::string(buf), epollfd, connfd);
+        pool.run(std::bind(strFunc, std::string(buf), epollfd, connfd));
+      }
+      else if (events[i].events & EPOLLOUT)
+      {
+        connfd = events[i].data.fd;
+        if (connfd < 0)
+          continue;
+
+        if (buf_map.count(connfd))
+        {
+          // 读取处理好的缓存
+          std::string s = buf_map[connfd];
+          const char *buf = s.c_str();
+          write(connfd, buf, strlen(buf));
+          // 删除缓存
+          buf_map.erase(connfd);
+          // 写完后将事件改为监听
+          event = events[i];
+          event.events = EPOLLIN;
+          epoll_ctl(epollfd, EPOLL_CTL_MOD, connfd, &event);
+        }
+        else
+        {
+          LOG_ERROR << "connfd " << connfd << "dont have buf";
+        }
       }
     }
   }
