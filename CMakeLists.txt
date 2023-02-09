@@ -14,5 +14,5 @@ find_library(BOOSTTEST_LIBRARY NAMES boost_unit_test_framework)
 add_subdirectory(base)
 add_subdirectory(net)
 
-add_executable(main main.cpp echo.cpp) 
-target_link_libraries(main base net)
+add_executable(main main.cpp) 
+target_link_libraries(main base net http)

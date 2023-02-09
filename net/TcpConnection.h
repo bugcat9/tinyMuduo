@@ -31,6 +31,8 @@ namespace tinyMuduo
                               public std::enable_shared_from_this<TcpConnection>
         {
         public:
+            typedef std::shared_ptr<FILE> FilePtr;
+            static const int kBufSize = 64 * 1024;
             /// Constructs a TcpConnection with a connected sockfd
             ///
             /// User should not create this object.
@@ -123,6 +125,7 @@ namespace tinyMuduo
             void connectEstablished(); // should be called only once
             // called when TcpServer has removed me from its map
             void connectDestroyed(); // should be called only once
+            FilePtr filePtr_;
 
         private:
             enum StateE
