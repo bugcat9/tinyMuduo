@@ -267,15 +267,17 @@ void HttpServer::onHttpProcess(const HttpRequest &req, HttpResponse *resp)
     {
         file.append("resources/fans.html");
     }
+    else if (req.path() == "/404")
+    {
+        file.append("resources/404.html");
+    }
     else
     {
         // strcpy(file, "resources");
         file.append("resources");
         // int len = strlen(file);
         const char *url_real = req.path().c_str();
-        // strncpy(file + len, url_real, strlen(url_real) - 1);
         file.append(url_real);
-        resp->setContentType("image/jpeg");
     }
 
     // 读取文件状态
@@ -283,6 +285,9 @@ void HttpServer::onHttpProcess(const HttpRequest &req, HttpResponse *resp)
     if (stat(file.c_str(), &fileStat) < 0)
     {
         LOG_INFO << file << " no such file";
+        file.clear();
+        file.append("resources/404.html");
+        stat(file.c_str(), &fileStat);
     }
 
     // if (!(fileStat.st_mode & S_IROTH))
