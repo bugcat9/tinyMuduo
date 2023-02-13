@@ -55,3 +55,6 @@ target_link_libraries(processinfo_test base)
 
 add_executable(logfile_test LogFile_test.cpp)
 target_link_libraries(logfile_test base)
+
+add_executable(sqlconnectionpool_test SqlConnectionPool_test.cpp)
+target_link_libraries(sqlconnectionpool_test base)

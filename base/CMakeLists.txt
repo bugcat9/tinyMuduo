@@ -12,9 +12,10 @@ Logging.cpp
 FileUtil.cpp
 ProcessInfo.cpp
 LogFile.cpp
+SqlConnectionPool.cpp
 )
 
 add_library(base ${base_SRCS})
-target_link_libraries(base pthread rt)
+target_link_libraries(base pthread rt mysqlclient)
 
 add_subdirectory(test)

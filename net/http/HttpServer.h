@@ -2,6 +2,7 @@
 #define _HTTPSERVER_H
 
 #include "../../net/TcpServer.h"
+#include "../../base/SqlConnectionPool.h"
 
 namespace tinyMuduo
 {
@@ -24,6 +25,10 @@ namespace tinyMuduo
             HttpServer(EventLoop *loop,
                        const InetAddress &listenAddr,
                        const string &name,
+                       const string &user,
+                       const string &passwd,
+                       const string &databaseName,
+                       int sqlNum,
                        TcpServer::Option option = TcpServer::kNoReusePort);
 
             EventLoop *getLoop() const { return server_.getLoop(); }
@@ -48,8 +53,18 @@ namespace tinyMuduo
                            Timestamp receiveTime);
             void onRequest(const TcpConnectionPtr &, const HttpRequest &);
             void onWriteComplete(const TcpConnectionPtr &conn);
+            void initmysql(ConnectionPool *connPool);
+
+            void onHttpProcess(const HttpRequest &req, HttpResponse *resp);
             TcpServer server_;
             HttpCallback httpCallback_;
+
+            ConnectionPool *connPool_; // 数据库相关
+            string user_;              // 登陆数据库用户名
+            string passwd_;            // 登陆数据库密码
+            string databaseName_;      // 使用数据库名
+            int sqlNum_;
+            map<string, string> users;
         };
 
     } // namespace net
