@@ -1,8 +1,8 @@
 #ifndef _HTTPSERVER_H
 #define _HTTPSERVER_H
 
-#include "../../net/TcpServer.h"
-#include "../../base/SqlConnectionPool.h"
+#include "net/TcpServer.h"
+#include "base/SqlConnectionPool.h"
 
 namespace tinyMuduo
 {

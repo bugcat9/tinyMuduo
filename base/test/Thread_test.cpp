@@ -1,5 +1,5 @@
-#include "../../base/Thread.h"
-#include "../../base/CurrentThread.h"
+#include "base/Thread.h"
+#include "base/CurrentThread.h"
 
 #include <string>
 #include <stdio.h>

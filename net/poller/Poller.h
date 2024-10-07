@@ -5,8 +5,8 @@
 #include <vector>
 #include <boost/noncopyable.hpp>
 
-#include "../../base/Timestamp.h"
-#include "../../net/EventLoop.h"
+#include "base/Timestamp.h"
+#include "net/EventLoop.h"
 
 namespace tinyMuduo
 {

@@ -1,4 +1,4 @@
-#include "../../base/Atomic.h"
+#include "base/Atomic.h"
 #include <assert.h>
 
 int main()

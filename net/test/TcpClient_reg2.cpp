@@ -1,9 +1,9 @@
 // TcpClient destructs when TcpConnection is connected but unique.
 
-#include "../../base/Logging.h"
-#include "../../base/Thread.h"
-#include "../../net/EventLoop.h"
-#include "../../net/TcpClient.h"
+#include "base/Logging.h"
+#include "base/Thread.h"
+#include "net/EventLoop.h"
+#include "net/TcpClient.h"
 
 using namespace tinyMuduo;
 using namespace tinyMuduo::net;

@@ -1,6 +1,6 @@
 #include "Poller.h"
 
-#include "../../net/Channel.h"
+#include "net/Channel.h"
 
 using namespace tinyMuduo;
 using namespace tinyMuduo::net;

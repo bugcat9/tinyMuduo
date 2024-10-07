@@ -1,7 +1,7 @@
 #include "EPollPoller.h"
 
-#include "../../base/Logging.h"
-#include "../../net/Channel.h"
+#include "base/Logging.h"
+#include "net/Channel.h"
 
 #include <assert.h>
 #include <errno.h>

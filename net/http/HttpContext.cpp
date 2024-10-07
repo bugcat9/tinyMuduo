@@ -1,7 +1,7 @@
 
 
-#include "../../net/Buffer.h"
-#include "../../net/http/HttpContext.h"
+#include "net/Buffer.h"
+#include "net/http/HttpContext.h"
 
 using namespace tinyMuduo;
 using namespace tinyMuduo::net;

@@ -1,7 +1,7 @@
-#include "../../base/BoundedBlockingQueue.h"
-#include "../../base/CountDownLatch.h"
-#include "../../base/Thread.h"
-#include "../../base/CurrentThread.h"
+#include "base/BoundedBlockingQueue.h"
+#include "base/CountDownLatch.h"
+#include "base/Thread.h"
+#include "base/CurrentThread.h"
 
 #include <string>
 #include <vector>

@@ -1,8 +1,8 @@
 // TcpClient::stop() called in the same iteration of IO event
 
-#include "../../base/Logging.h"
-#include "../../net/EventLoop.h"
-#include "../../net/TcpClient.h"
+#include "base/Logging.h"
+#include "net/EventLoop.h"
+#include "net/TcpClient.h"
 
 using namespace tinyMuduo;
 using namespace tinyMuduo::net;

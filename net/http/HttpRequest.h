@@ -1,9 +1,9 @@
 #ifndef _HTTPREQUEST_H
 #define _HTTPREQUEST_H
 
-#include "../../base/copyable.h"
-#include "../../base/Timestamp.h"
-#include "../../base/Types.h"
+#include "base/copyable.h"
+#include "base/Timestamp.h"
+#include "base/Types.h"
 
 #include <map>
 #include <assert.h>

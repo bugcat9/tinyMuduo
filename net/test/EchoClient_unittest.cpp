@@ -1,9 +1,9 @@
-#include "../../net/TcpClient.h"
+#include "net/TcpClient.h"
 
-#include "../../base/Logging.h"
-#include "../../base/Thread.h"
-#include "../../net/EventLoop.h"
-#include "../../net/InetAddress.h"
+#include "base/Logging.h"
+#include "base/Thread.h"
+#include "net/EventLoop.h"
+#include "net/InetAddress.h"
 
 #include <utility>
 

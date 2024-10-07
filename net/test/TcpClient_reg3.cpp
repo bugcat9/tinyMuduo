@@ -1,8 +1,8 @@
 // TcpClient destructs in a different thread.
 
-#include "../../base/Logging.h"
-#include "../../net/EventLoopThread.h"
-#include "../../net/TcpClient.h"
+#include "base/Logging.h"
+#include "net/EventLoopThread.h"
+#include "net/TcpClient.h"
 
 using namespace tinyMuduo;
 using namespace tinyMuduo::net;

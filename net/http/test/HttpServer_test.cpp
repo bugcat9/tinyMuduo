@@ -1,8 +1,8 @@
 #include "../HttpServer.h"
 #include "../HttpRequest.h"
 #include "../HttpResponse.h"
-#include "../../../net/EventLoop.h"
-#include "../../../base/Logging.h"
+#include "../net/EventLoop.h"
+#include "../base/Logging.h"
 
 #include <iostream>
 #include <map>

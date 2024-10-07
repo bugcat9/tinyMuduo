@@ -1,4 +1,4 @@
-#include "../../net/Buffer.h"
+#include "net/Buffer.h"
 
 // #define BOOST_TEST_MODULE BufferTest
 #define BOOST_TEST_MAIN

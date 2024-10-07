@@ -1,8 +1,8 @@
-#include "../../base/BlockingQueue.h"
-#include "../../base/CountDownLatch.h"
-#include "../../base/Logging.h"
-#include "../../base/Thread.h"
-#include "../../base/Timestamp.h"
+#include "base/BlockingQueue.h"
+#include "base/CountDownLatch.h"
+#include "base/Logging.h"
+#include "base/Thread.h"
+#include "base/Timestamp.h"
 
 #include <map>
 #include <string>

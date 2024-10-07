@@ -1,10 +1,10 @@
 
-#include "../../net/http/HttpServer.h"
+#include "net/http/HttpServer.h"
 
-#include "../../base/Logging.h"
-#include "../../net/http/HttpContext.h"
-#include "../../net/http/HttpRequest.h"
-#include "../../net/http/HttpResponse.h"
+#include "base/Logging.h"
+#include "net/http/HttpContext.h"
+#include "net/http/HttpRequest.h"
+#include "net/http/HttpResponse.h"
 #include <sys/stat.h>
 
 using namespace tinyMuduo;

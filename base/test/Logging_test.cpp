@@ -1,6 +1,6 @@
-#include "../../base/Logging.h"
-#include "../../base/ThreadPool.h"
-#include "../../base/TimeZone.h"
+#include "base/Logging.h"
+#include "base/ThreadPool.h"
+#include "base/TimeZone.h"
 
 #include <stdio.h>
 #include <unistd.h>

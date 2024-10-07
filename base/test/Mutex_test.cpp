@@ -1,7 +1,7 @@
-// #include "../../base/CountDownLatch.h"
-#include "../../base/Mutex.h"
-#include "../../base/Thread.h"
-#include "../../base/Timestamp.h"
+// #include "base/CountDownLatch.h"
+#include "base/Mutex.h"
+#include "base/Thread.h"
+#include "base/Timestamp.h"
 
 #include <vector>
 #include <stdio.h>

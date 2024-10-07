@@ -1,8 +1,8 @@
 #ifndef _HTTPRESPONSE_H
 #define _HTTPRESPONSE_H
 
-#include "../../base/copyable.h"
-#include "../../base/Types.h"
+#include "base/copyable.h"
+#include "base/Types.h"
 
 #include <map>
 

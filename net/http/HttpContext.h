@@ -1,9 +1,9 @@
 #ifndef _HTTPCONTEXT_H
 #define _HTTPCONTEXT_H
 
-#include "../../base/copyable.h"
+#include "base/copyable.h"
 
-#include "../../net/http/HttpRequest.h"
+#include "net/http/HttpRequest.h"
 
 namespace tinyMuduo
 {

@@ -1,5 +1,5 @@
-#include "../../net/EventLoop.h"
-#include "../../base/Thread.h"
+#include "net/EventLoop.h"
+#include "base/Thread.h"
 
 #include <assert.h>
 #include <stdio.h>

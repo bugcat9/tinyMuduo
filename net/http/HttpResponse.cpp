@@ -1,7 +1,7 @@
 
 
-#include "../../net/http/HttpResponse.h"
-#include "../../net/Buffer.h"
+#include "net/http/HttpResponse.h"
+#include "net/Buffer.h"
 
 #include <stdio.h>
 

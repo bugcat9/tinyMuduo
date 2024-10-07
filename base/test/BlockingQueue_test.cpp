@@ -1,7 +1,7 @@
-#include "../../base/BlockingQueue.h"
-#include "../../base/CountDownLatch.h"
-#include "../../base/Thread.h"
-#include "../../base/CurrentThread.h"
+#include "base/BlockingQueue.h"
+#include "base/CountDownLatch.h"
+#include "base/Thread.h"
+#include "base/CurrentThread.h"
 
 #include <memory>
 #include <string>

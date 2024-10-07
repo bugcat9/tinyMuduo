@@ -1,5 +1,5 @@
-#include "../../base/CurrentThread.h"
-#include "../../base/Exception.h"
+#include "base/CurrentThread.h"
+#include "base/Exception.h"
 #include <functional>
 #include <vector>
 #include <stdio.h>

@@ -1,7 +1,7 @@
-#include "../../base/ThreadPool.h"
-#include "../../base/CountDownLatch.h"
-#include "../../base/CurrentThread.h"
-// #include "../../base/Logging.h"
+#include "base/ThreadPool.h"
+#include "base/CountDownLatch.h"
+#include "base/CurrentThread.h"
+// #include "base/Logging.h"
 
 #include <stdio.h>
 #include <unistd.h> // usleep

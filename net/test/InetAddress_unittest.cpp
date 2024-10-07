@@ -1,6 +1,6 @@
-#include "../../net/InetAddress.h"
+#include "net/InetAddress.h"
 
-#include "../../base/Logging.h"
+#include "base/Logging.h"
 
 // #define BOOST_TEST_MODULE InetAddressTest
 #define BOOST_TEST_MAIN

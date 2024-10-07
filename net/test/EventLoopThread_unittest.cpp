@@ -1,7 +1,7 @@
-#include "../../net/EventLoopThread.h"
-#include "../../net/EventLoop.h"
-#include "../../base/Thread.h"
-#include "../../base/CountDownLatch.h"
+#include "net/EventLoopThread.h"
+#include "net/EventLoop.h"
+#include "base/Thread.h"
+#include "base/CountDownLatch.h"
 
 #include <stdio.h>
 #include <unistd.h>

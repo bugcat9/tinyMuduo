@@ -1,6 +1,6 @@
-#include "../../base/Singleton.h"
-#include "../../base/CurrentThread.h"
-#include "../../base/Thread.h"
+#include "base/Singleton.h"
+#include "base/CurrentThread.h"
+#include "base/Thread.h"
 
 #include <stdio.h>
 #include <boost/noncopyable.hpp>
